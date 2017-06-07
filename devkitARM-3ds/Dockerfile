@@ -10,16 +10,18 @@ RUN git clone https://github.com/devkitPro/3ds_portlibs && \
   git clone --recursive https://github.com/Steveice10/bannertool && \
   git clone https://github.com/profi200/Project_CTR.git
 
-WORKDIR cd /opt/3ds_portlibs
+WORKDIR /opt/3ds_portlibs
 RUN make zlib && \
   make install-zlib
 
-WORKDIR cd /opt/bannertool
+WORKDIR /opt/bannertool
 RUN make && \
   cp output/linux-x86_64/bannertool /usr/local/bin
 
-WORKDIR cd /opt/Project_CTR/makerom
+WORKDIR /opt/Project_CTR/makerom
 RUN make && \
   cp makerom /usr/local/bin
+
+WORKDIR /source
 
 CMD ["bash"]
